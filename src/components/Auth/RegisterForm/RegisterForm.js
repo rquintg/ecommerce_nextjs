@@ -1,15 +1,27 @@
 import {Form, FormGroup} from 'semantic-ui-react'
 import {useFormik} from 'formik'
+import {useRouter} from 'next/router'
+import {Auth} from '@/api';
 import {initValues, validationSchema} from './RegisterForm.form'
 
+const authCtrl = new Auth();
+
 export function RegisterForm() {
+
+    const router = useRouter();
 
     const formik = useFormik({
         initialValues: initValues(),
         validationSchema: validationSchema(),
         validateOnChange: false,
-        onSubmit: values => {
-            console.log(values);
+        onSubmit: async (values) => {
+            try {
+                await authCtrl.register(values);
+                router.push('/join/sign-in');
+                console.log(values);
+            } catch (error) {
+                console.log(error);
+            }
         }
     });
 
