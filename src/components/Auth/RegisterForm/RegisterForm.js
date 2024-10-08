@@ -17,7 +17,7 @@ export function RegisterForm() {
         onSubmit: async (values) => {
             try {
                 await authCtrl.register(values);
-                router.push('/join/sign-in');
+                await router.push('/join/sign-in');
                 console.log(values);
             } catch (error) {
                 console.log(error);
