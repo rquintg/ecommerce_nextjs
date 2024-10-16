@@ -13,7 +13,21 @@ export function AuthProvider(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setLoading(false);
+        (async () => {
+            const token = tokenCtrl.getToken();
+
+            if(!token){
+                logout()
+                setLoading(false);
+                return;
+            }
+
+            if(tokenCtrl.hasExpired(token)){
+                logout();
+            } else {
+                await login(token);
+            }
+        })()
         }, [])
 
 
@@ -28,6 +42,10 @@ export function AuthProvider(props) {
             console.error(error);
             setLoading(false);
         }
+    }
+
+    const logout = () => {
+        console.log('Cerrando sesión');
     }
 
     const data= {
