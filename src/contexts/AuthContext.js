@@ -45,14 +45,16 @@ export function AuthProvider(props) {
     }
 
     const logout = () => {
-        console.log('Cerrando sesión');
+        tokenCtrl.removeToken();
+        setUser(null);
+        setToken(null);
     }
 
     const data= {
         accessToken: token,
         user,
         login,
-        logout: null,
+        logout,
         updateUser: null,
     };
 
