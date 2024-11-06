@@ -1,5 +1,7 @@
 import {Image, Icon, Input} from 'semantic-ui-react'
 import {useEffect, useState} from "react";
+import Link from 'next/link'
+import {map} from 'lodash'
 import {Platform} from '@/api'
 import styles from './Menu.module.scss';
 
@@ -8,14 +10,14 @@ const platformCtrl = new Platform();
 export function Menu (props) {
     const {isOpenSearch} = props
 
-    const [platform, setPlatform] = useState(null)
-    console.log(platform)
+    const [platforms, setPlatforms] = useState(null)
+    console.log(platforms)
 
     useEffect(() => {
         (async () => {
             try {
                 const response = await platformCtrl.getAll();
-               setPlatform(response.data)
+               setPlatforms(response.data)
 
             }catch (e) {
                 console.error(e)
@@ -25,8 +27,14 @@ export function Menu (props) {
     }, [])
 
     return (
-        <div>
-            <h2>Menu</h2>
+        <div className={styles.platforms}>
+            {map(platforms, (platform) => (
+                <Link key={platform.id} href={`/game/${platform.attributes.slug}`}>
+                    <Image src={platform.attributes.icon.data.attributes.url} />
+                    {platform.attributes.title}
+                </Link>
+
+            ))}
         </div>
     )
 }

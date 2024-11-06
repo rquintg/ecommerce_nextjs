@@ -5,7 +5,10 @@ export class Platform {
     async getAll(){
         try {
 
-            const url =`${ENV.API_URL}/${ENV.ENDPOINTS.PLATFROMS}?populate=icon`;
+            const sort = 'sort=order:asc';
+            const populate = 'populate=icon';
+
+            const url =`${ENV.API_URL}/${ENV.ENDPOINTS.PLATFROMS}?${populate}&${sort}`;
 
             const response = await fetch(url);
             const result = await response.json();
