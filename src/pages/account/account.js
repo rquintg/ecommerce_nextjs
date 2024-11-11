@@ -10,6 +10,7 @@ import styles from './account.module.scss';
 export default function AccountPage() {
 
     const {user, logout} = useAuth();
+    console.log(user);
     const router = useRouter();
 
     if(!user){
@@ -50,6 +51,9 @@ export default function AccountPage() {
             render: () => (
                 <Tab.Pane attached={false}>
                     <Settings.ChangeNameForm/>
+                    <div className={styles.containerForms}>
+                        <Settings.ChangeEmailForm/>
+                    </div>
                     <Separator height={80}/>
                 </Tab.Pane>
             )
