@@ -2,7 +2,7 @@ import {Tab} from 'semantic-ui-react';
 import {useRouter} from 'next/router';
 import {BasicLayout} from "@/layouts";
 import {useAuth} from '@/Hooks'
-import {Info} from "@/components/Account";
+import {Info, Settings} from "@/components/Account";
 
 import styles from './account.module.scss';
 
@@ -48,7 +48,7 @@ export default function AccountPage() {
             },
             render: () => (
                 <Tab.Pane attached={false}>
-                    <p>Mis ajustes...</p>
+                    <Settings.ChangeNameForm/>
                 </Tab.Pane>
             )
         },
