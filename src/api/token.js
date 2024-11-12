@@ -4,8 +4,7 @@ import {jwtDecode} from "jwt-decode";
 export class Token {
     setToken(token) {
         localStorage.setItem(ENV.TOKEN, token);
-        console.log(token);
-    }
+}
 
     getToken() {
         return localStorage.getItem(ENV.TOKEN);

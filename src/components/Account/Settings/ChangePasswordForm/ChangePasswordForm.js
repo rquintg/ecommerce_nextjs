@@ -1,5 +1,5 @@
 import {Form} from "semantic-ui-react";
-import {Formik, useFormik} from "formik";
+import {useFormik} from "formik";
 import {User} from '@/api';
 import {useAuth} from '@/Hooks';
 import {initialValues, validationSchema} from './ChangePasswordForm.form';

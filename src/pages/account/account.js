@@ -12,10 +12,15 @@ export default function AccountPage() {
     const {user, logout} = useAuth();
     const router = useRouter();
 
-    if(!user){
-        router.push('/');
+    if (!user) {
+        router.push("/").then(() => {
+            console.log('Redirección exitosa');
+        }).catch((error) => {
+            console.error('Error en la redirección:', error);
+        });
         return null;
     }
+
 
     const panes = [
         {
@@ -44,6 +49,7 @@ export default function AccountPage() {
         },
         {
             menuItem: {
+                key: 20,
                 icon: 'settings',
                 content: 'Ajustes',
             },
@@ -60,7 +66,8 @@ export default function AccountPage() {
         },
         {
             menuItem: {
-                icon: 'logout',
+                key: 21,
+                icon: 'log out',
                 content: '',
                 onClick: logout,
             },
