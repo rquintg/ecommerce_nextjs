@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {Button} from "semantic-ui-react";
 import {BasicModal} from '@/components/Shared';
+import {AddressForm} from '../AddressForm';
 
 import styles from './AddAddress.module.scss';
-import {log} from "next/dist/server/typescript/utils";
 
 export function AddAddress() {
 
@@ -21,7 +21,7 @@ export function AddAddress() {
           </Button>
 
         <BasicModal show={show} onClose={onOpenClose} title='Nueva direccion'>
-            <h2>Contenido del modal</h2>
+            <AddressForm onClose={onOpenClose} />
         </BasicModal>
     </>
   );
