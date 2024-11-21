@@ -2,7 +2,7 @@ import {Button, Icon} from "semantic-ui-react";
 import styles from './Address.module.scss';
 
 export function Address (props){
-    const {addressId, address} = props;
+    const {addressId, address, onReload} = props;
 
     return(
         <>

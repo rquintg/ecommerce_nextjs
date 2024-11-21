@@ -8,7 +8,9 @@ import styles from './ListAddresses.module.scss';
 
 const addressCtrl = new AddressCtrl();
 
-export function ListAddresses (){
+export function ListAddresses (props){
+
+    const {reload, onReload} = props;
 
     const [addresses, setAddresses] = useState([]);
     const {user} = useAuth();
@@ -23,7 +25,7 @@ export function ListAddresses (){
             }
         })()
 
-    }, []);
+    }, [reload]);
 
     if(!addresses.length){
         return (
@@ -39,6 +41,7 @@ export function ListAddresses (){
                 <Address key={address.id}
                          addressId={address.id}
                          address={address.attributes}
+                         onReload={onReload}
                 />
             ))}
         </div>
