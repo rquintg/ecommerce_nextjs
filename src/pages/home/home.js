@@ -1,12 +1,13 @@
 import {BasicLayout} from '@/layouts';
+import {Home} from '@/components/Home';
 
 export default function HomePage() {
     return (
-        <div>
+        <>
             <BasicLayout>
-            <h1 style={{paddingTop: 100}}>Estamos en la Home</h1>
+            <Home.BannerLastGamePublished/>
             </BasicLayout>
 
-        </div>
+        </>
     );
 }
